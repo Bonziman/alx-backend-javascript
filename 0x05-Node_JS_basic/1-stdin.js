@@ -7,16 +7,21 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-// Ask for user's name
-rl.question('Welcome to Holberton School, what is your name?\n', (name) => {
-    // Display the user's name
-    console.log(`Your name is: ${name}`);
+// Function to ask for user's name
+function askName() {
+    rl.question('Welcome to Holberton School, what is your name?\n', (name) => {
+        // Display the user's name
+        console.log(`Your name is: ${name}`);
 
-    // Close the interface
-    rl.close();
-});
+        // Repeat the question
+        askName();
+    });
+}
 
 // Handle the closing event
 rl.on('close', () => {
     console.log('This important software is now closing');
 });
+
+// Start the program
+askName();
